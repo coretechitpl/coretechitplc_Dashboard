@@ -1,0 +1,317 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global CSS for Dashboard - Prevent horizontal scrolling and ensure RWD */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Ensure all containers respect viewport width */
+*, *::before, *::after {
+  box-sizing: border-box !important;
+  max-width: 100%;
+}
+
+/* Root container fixes */
+#root {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Prevent any element from causing horizontal overflow */
+.container, .main-content, .dashboard-container {
+  overflow-x: hidden !important;
+  max-width: 100% !important;
+}
+
+/* Fix for flex containers */
+.flex, .flex-1, .flex-col, .flex-row {
+  min-width: 0 !important;
+}
+
+/* Grid container fixes */
+.grid {
+  min-width: 0 !important;
+  overflow: hidden;
+}
+
+/* Text overflow prevention */
+.truncate-safe {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+/* Image and media responsive fixes */
+img, video, canvas, svg {
+  max-width: 100% !important;
+  height: auto;
+}
+
+/* Table responsive fixes */
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+/* Form element fixes */
+input, select, textarea {
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+/* Mobile-specific fixes */
+@media (max-width: 767px) {
+  body {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  
+  /* Ensure no element exceeds viewport on mobile */
+  * {
+    max-width: 100vw !important;
+  }
+  
+  /* Mobile container padding */
+  .mobile-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Mobile text sizing */
+  h1 { font-size: 1.5rem !important; }
+  h2 { font-size: 1.25rem !important; }
+  h3 { font-size: 1.125rem !important; }
+  
+  /* Mobile button sizing */
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Tablet-specific fixes */
+@media (min-width: 768px) and (max-width: 1023px) {
+  body {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+}
+
+/* Desktop-specific fixes */
+@media (min-width: 1024px) {
+  body {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+}
+
+/* Sidebar specific fixes */
+.sidebar-container {
+  overflow-x: hidden !important;
+  max-width: 100% !important;
+}
+
+/* Main content area fixes */
+.main-content-area {
+  overflow-x: hidden !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+/* Chart and visualization fixes */
+.chart-container, .visualization-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
+/* Modal and overlay fixes */
+.modal-overlay {
+  overflow-x: hidden !important;
+  overflow-y: auto;
+}
+
+/* Animation performance */
+* {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles for accessibility */
+*:focus {
+  outline: 2px solid #f4c951;
+  outline-offset: 2px;
+}
+
+/* Remove default margins and paddings that might cause overflow */
+h1, h2, h3, h4, h5, h6, p, ul, ol, li, blockquote, figure {
+  margin: 0;
+  padding: 0;
+}
+
+/* List styles */
+ul, ol {
+  list-style: none;
+}
+
+/* Link styles */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Button reset */
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(5, 3, 3, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(132, 40, 91, 0.5);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(132, 40, 91, 0.7);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(132, 40, 91, 0.5) rgba(5, 3, 3, 0.5);
+}
+
+/* Loading states */
+.loading {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Utility classes for common responsive patterns */
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  width: 100%;
+}
+
+.responsive-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+}
+
+.full-width-safe {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* Print styles */
+@media print {
+  * {
+    overflow: visible !important;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  * {
+    border-color: currentColor !important;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dark mode variables (already handled by Tailwind, but backup) */
+:root {
+  --color-core-black: #050303;
+  --color-core-dark: #27061c;
+  --color-core-highlight: #84285b;
+  --color-core-light: #efedf5;
+  --color-core-gold: #f4c951;
+}
+
+/* Ensure proper stacking context */
+.dashboard-layout {
+  position: relative;
+  z-index: 0;
+}
+
+.sidebar-layer {
+  z-index: 30;
+}
+
+.navbar-layer {
+  z-index: 20;
+}
+
+.content-layer {
+  z-index: 10;
+}
+
+.modal-layer {
+  z-index: 50;
+}
+
+.tooltip-layer {
+  z-index: 60;
+}
